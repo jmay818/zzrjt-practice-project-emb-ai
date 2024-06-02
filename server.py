@@ -18,12 +18,12 @@ def sent_analyzer():
     # TODO
     text_to_analyze = request.args.get("textToAnalyze")
     response = sentiment_analyzer(text_to_analyze)
-    if type(response) != int:
+    if response["label"] != None:
         label = response["label"]
         score = response["score"]
         return f"The given text has been identified as {label} with a score of {score}."
     else:
-        return f"The response from the sentiment server did not return 200. Instead it returned {response}."
+        return "Invalid input! Try again."
 @app.route("/")
 def render_index_page():
     ''' This function initiates the rendering of the main application

@@ -12,4 +12,4 @@ def sentiment_analyzer(text_to_analyse):
         score = formatted_response["documentSentiment"]["score"]
         return { "label": label, "score": score }
     else:
-        return response.status_code
+        return { "label": None, "score": None }
